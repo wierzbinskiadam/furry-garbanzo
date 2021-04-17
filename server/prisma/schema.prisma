@@ -1,0 +1,39 @@
+datasource postgres {
+  provider = "postgresql"
+  url      = env("POSTGRESQL_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  createdAt      DateTime        @default(now())
+  eventTemplates EventTemplate[]
+  firstName      String?
+  id             String          @id @default(cuid())
+  lastName       String?
+  password       String
+  roles          String[]
+  updatedAt      DateTime        @updatedAt
+  username       String          @unique
+}
+
+model EventTemplate {
+  createdAt     DateTime       @default(now())
+  description   String
+  eventPictures EventPicture[]
+  id            String         @id @default(cuid())
+  teacher       User?          @relation(fields: [teacherId], references: [id])
+  teacherId     String?
+  updatedAt     DateTime       @updatedAt
+}
+
+model EventPicture {
+  createdAt       DateTime        @default(now())
+  eventTemplateId EventTemplate[]
+  id              String          @id @default(cuid())
+  image           String?
+  sort            Int?
+  updatedAt       DateTime        @updatedAt
+}
