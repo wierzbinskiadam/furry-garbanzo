@@ -1,5 +1,11 @@
 [
   {
+    "role": "user",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
     "role": "admin",
     "resource": "User",
     "action": "read:own",
@@ -8,13 +14,7 @@
   {
     "role": "user",
     "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "User",
-    "action": "read:own",
+    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -26,13 +26,7 @@
   {
     "role": "user",
     "resource": "User",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "User",
-    "action": "create:any",
+    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -44,13 +38,7 @@
   {
     "role": "user",
     "resource": "User",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "User",
-    "action": "update:any",
+    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -62,13 +50,7 @@
   {
     "role": "user",
     "resource": "User",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "User",
-    "action": "delete:any",
+    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -79,193 +61,121 @@
   },
   {
     "role": "user",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "EventTemplate",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "EventTemplate",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "EventTemplate",
+    "resource": "Person",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "admin",
-    "resource": "EventTemplate",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "EventTemplate",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "EventTemplate",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "EventTemplate",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "EventTemplate",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "EventTemplate",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "EventTemplate",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "EventTemplate",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "EventTemplate",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "EventTemplate",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "EventTemplate",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "EventTemplate",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "EventPicture",
+    "resource": "Person",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "EventPicture",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "EventPicture",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "EventPicture",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "EventPicture",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "EventPicture",
+    "resource": "Person",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "admin",
-    "resource": "EventPicture",
-    "action": "update:any",
+    "resource": "Person",
+    "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "EventPicture",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "EventPicture",
+    "resource": "Person",
     "action": "update:any",
     "attributes": "*"
   },
   {
     "role": "admin",
-    "resource": "EventPicture",
-    "action": "delete:any",
+    "resource": "Person",
+    "action": "update:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "EventPicture",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "teacher",
-    "resource": "EventPicture",
+    "resource": "Person",
     "action": "delete:any",
     "attributes": "*"
   },
   {
     "role": "admin",
-    "resource": "EventPicture",
+    "resource": "Person",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Person",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Person",
     "action": "read:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "EventPicture",
+    "resource": "Book",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Book",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Book",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Book",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Book",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Book",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Book",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Book",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Book",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "teacher",
-    "resource": "EventPicture",
+    "role": "admin",
+    "resource": "Book",
     "action": "read:any",
     "attributes": "*"
   }

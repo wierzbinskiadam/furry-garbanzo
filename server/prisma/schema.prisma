@@ -8,32 +8,29 @@ generator client {
 }
 
 model User {
-  createdAt      DateTime        @default(now())
-  eventTemplates EventTemplate[]
-  firstName      String?
-  id             String          @id @default(cuid())
-  lastName       String?
-  password       String
-  roles          String[]
-  updatedAt      DateTime        @updatedAt
-  username       String          @unique
+  createdAt DateTime @default(now())
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  password  String
+  roles     String[]
+  updatedAt DateTime @updatedAt
+  username  String   @unique
 }
 
-model EventTemplate {
-  createdAt     DateTime       @default(now())
-  description   String
-  eventPictures EventPicture[]
-  id            String         @id @default(cuid())
-  teacher       User?          @relation(fields: [teacherId], references: [id])
-  teacherId     String?
-  updatedAt     DateTime       @updatedAt
+model Person {
+  birthday  DateTime?
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
+  surname   String?
+  updatedAt DateTime  @updatedAt
 }
 
-model EventPicture {
-  createdAt       DateTime        @default(now())
-  eventTemplateId EventTemplate[]
-  id              String          @id @default(cuid())
-  image           String?
-  sort            Int?
-  updatedAt       DateTime        @updatedAt
+model Book {
+  author    String?
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  personId  String?
+  titile    String?
+  updatedAt DateTime @updatedAt
 }

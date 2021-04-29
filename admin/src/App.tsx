@@ -15,8 +15,8 @@ import BreadcrumbsProvider from "./components/breadcrumbs/BreadcrumbsProvider";
 import useBreadcrumbs from "./components/breadcrumbs/use-breadcrumbs";
 import PrivateRoute from "./components/PrivateRoute";
 import { UserIndex } from "./user/UserIndex";
-import { EventTemplateIndex } from "./eventTemplate/EventTemplateIndex";
-import { EventPictureIndex } from "./eventPicture/EventPictureIndex";
+import { PersonIndex } from "./person/PersonIndex";
+import { BookIndex } from "./book/BookIndex";
 
 const App = (): React.ReactElement => {
   const history = useHistory();
@@ -45,7 +45,7 @@ export default App;
 /**@todo: move to a separate template file */
 const AppLayout = (): React.ReactElement => {
   const history = useHistory();
-  useBreadcrumbs("/", "workszopy");
+  useBreadcrumbs("/", "Wygewnerowany_kod");
   const breadcrumbsContext = useContext(BreadcrumbsContext);
 
   const signOut = useCallback(() => {
@@ -64,7 +64,7 @@ const AppLayout = (): React.ReactElement => {
         onSignOutClick={signOut}
         logoContent={
           <Link to="/">
-            <CircleBadge name={"workszopy"} />
+            <CircleBadge name={"Wygewnerowany_kod"} />
           </Link>
         }
       ></Menu>
@@ -86,14 +86,8 @@ const AppLayout = (): React.ReactElement => {
           <Switch>
             <PrivateRoute exact path="/" component={Navigation} />
             <PrivateRoute path="/users" component={UserIndex} />
-            <PrivateRoute
-              path="/event-templates"
-              component={EventTemplateIndex}
-            />
-            <PrivateRoute
-              path="/event-pictures"
-              component={EventPictureIndex}
-            />
+            <PrivateRoute path="/people" component={PersonIndex} />
+            <PrivateRoute path="/books" component={BookIndex} />
           </Switch>
         </Page>
       </MainLayout.Content>
