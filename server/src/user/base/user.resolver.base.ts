@@ -13,8 +13,6 @@ import { DeleteUserArgs } from "./DeleteUserArgs";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { User } from "./User";
-import { EventTemplateFindManyArgs } from "../../eventTemplate/base/EventTemplateFindManyArgs";
-import { EventTemplate } from "../../eventTemplate/base/EventTemplate";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -171,26 +169,5 @@ export class UserResolverBase {
       }
       throw error;
     }
-  }
-
-  @graphql.ResolveField(() => [EventTemplate])
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
-  async eventTemplates(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: EventTemplateFindManyArgs,
-    @gqlUserRoles.UserRoles() userRoles: string[]
-  ): Promise<EventTemplate[]> {
-    const permission = this.rolesBuilder.permission({
-      role: userRoles,
-      action: "read",
-      possession: "any",
-      resource: "EventTemplate",
-    });
-    const results = await this.service.findEventTemplates(parent.id, args);
-    return results.map((result) => permission.filter(result));
   }
 }

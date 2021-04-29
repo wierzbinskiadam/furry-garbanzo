@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { UserModule } from "./user/user.module";
-import { EventTemplateModule } from "./eventTemplate/eventTemplate.module";
-import { EventPictureModule } from "./eventPicture/eventPicture.module";
+import { PersonModule } from "./person/person.module";
+import { BookModule } from "./book/book.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { MorganModule } from "nest-morgan";
@@ -14,8 +14,8 @@ import { GraphQLModule } from "@nestjs/graphql";
   controllers: [],
   imports: [
     UserModule,
-    EventTemplateModule,
-    EventPictureModule,
+    PersonModule,
+    BookModule,
     ACLModule,
     AuthModule,
     MorganModule,
