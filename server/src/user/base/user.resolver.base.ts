@@ -7,14 +7,13 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import * as gqlUserRoles from "../../auth/gqlUserRoles.decorator";
 import * as abacUtil from "../../auth/abac.util";
 import { isRecordNotFoundError } from "../../prisma.util";
+import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { User } from "./User";
-import { EventTemplateFindManyArgs } from "../../eventTemplate/base/EventTemplateFindManyArgs";
-import { EventTemplate } from "../../eventTemplate/base/EventTemplate";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -24,6 +23,25 @@ export class UserResolverBase {
     protected readonly service: UserService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
+
+  @graphql.Query(() => MetaQueryPayload)
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async _usersMeta(
+    @graphql.Args() args: UserFindManyArgs
+  ): Promise<MetaQueryPayload> {
+    const results = await this.service.count({
+      ...args,
+      skip: undefined,
+      take: undefined,
+    });
+    return {
+      count: results,
+    };
+  }
 
   @graphql.Query(() => [User])
   @nestAccessControl.UseRoles({
@@ -171,26 +189,5 @@ export class UserResolverBase {
       }
       throw error;
     }
-  }
-
-  @graphql.ResolveField(() => [EventTemplate])
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
-  async eventTemplates(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: EventTemplateFindManyArgs,
-    @gqlUserRoles.UserRoles() userRoles: string[]
-  ): Promise<EventTemplate[]> {
-    const permission = this.rolesBuilder.permission({
-      role: userRoles,
-      action: "read",
-      possession: "any",
-      resource: "EventTemplate",
-    });
-    const results = await this.service.findEventTemplates(parent.id, args);
-    return results.map((result) => permission.filter(result));
   }
 }

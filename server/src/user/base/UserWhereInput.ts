@@ -1,68 +1,53 @@
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsOptional, IsString } from "class-validator";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
+import { IsOptional } from "class-validator";
+import { StringFilter } from "../../util/StringFilter";
 @InputType()
 class UserWhereInput {
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
   })
-  @IsDate()
-  @Type(() => Date)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => Date, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  createdAt?: Date;
+  firstName?: StringNullableFilter;
+
   @ApiProperty({
     required: false,
-    type: String,
+    type: StringFilter,
   })
-  @IsString()
+  @Type(() => StringFilter)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => StringFilter, {
     nullable: true,
   })
-  firstName?: string | null;
+  id?: StringFilter;
+
   @ApiProperty({
     required: false,
-    type: String,
+    type: StringNullableFilter,
   })
-  @IsString()
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  id?: string;
+  lastName?: StringNullableFilter;
+
   @ApiProperty({
     required: false,
-    type: String,
+    type: StringFilter,
   })
-  @IsString()
+  @Type(() => StringFilter)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => StringFilter, {
     nullable: true,
   })
-  lastName?: string | null;
-  @ApiProperty({
-    required: false,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @IsOptional()
-  @Field(() => Date, {
-    nullable: true,
-  })
-  updatedAt?: Date;
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  username?: string;
+  username?: StringFilter;
 }
 export { UserWhereInput };

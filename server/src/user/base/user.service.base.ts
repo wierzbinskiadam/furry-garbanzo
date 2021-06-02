@@ -1,5 +1,5 @@
 import { PrismaService } from "nestjs-prisma";
-import { Prisma, User, EventTemplate } from "@prisma/client";
+import { Prisma, User } from "@prisma/client";
 import { PasswordService } from "../../auth/password.service";
 import { transformStringFieldUpdateInput } from "../../prisma.util";
 
@@ -8,6 +8,12 @@ export class UserServiceBase {
     protected readonly prisma: PrismaService,
     protected readonly passwordService: PasswordService
   ) {}
+
+  async count<T extends Prisma.UserFindManyArgs>(
+    args: Prisma.SelectSubset<T, Prisma.UserFindManyArgs>
+  ): Promise<number> {
+    return this.prisma.user.count(args);
+  }
 
   async findMany<T extends Prisma.UserFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.UserFindManyArgs>
@@ -53,16 +59,5 @@ export class UserServiceBase {
     args: Prisma.SelectSubset<T, Prisma.UserDeleteArgs>
   ): Promise<User> {
     return this.prisma.user.delete(args);
-  }
-
-  async findEventTemplates(
-    parentId: string,
-    args: Prisma.EventTemplateFindManyArgs
-  ): Promise<EventTemplate[]> {
-    return this.prisma.user
-      .findUnique({
-        where: { id: parentId },
-      })
-      .eventTemplates(args);
   }
 }

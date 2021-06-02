@@ -13,6 +13,7 @@ class UserCreateInput {
     nullable: true,
   })
   firstName?: string | null;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -23,6 +24,7 @@ class UserCreateInput {
     nullable: true,
   })
   lastName?: string | null;
+
   @ApiProperty({
     required: true,
     type: String,
@@ -30,6 +32,7 @@ class UserCreateInput {
   @IsString()
   @Field(() => String)
   password!: string;
+
   @ApiProperty({
     required: true,
     type: [String],
@@ -39,6 +42,7 @@ class UserCreateInput {
   })
   @Field(() => [String])
   roles!: Array<string>;
+
   @ApiProperty({
     required: true,
     type: String,

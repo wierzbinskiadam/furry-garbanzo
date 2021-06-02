@@ -13,6 +13,7 @@ class UserUpdateInput {
     nullable: true,
   })
   firstName?: string | null;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -23,6 +24,7 @@ class UserUpdateInput {
     nullable: true,
   })
   lastName?: string | null;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -33,6 +35,7 @@ class UserUpdateInput {
     nullable: true,
   })
   password?: string;
+
   @ApiProperty({
     required: false,
     type: [String],
@@ -45,6 +48,7 @@ class UserUpdateInput {
     nullable: true,
   })
   roles?: Array<string>;
+
   @ApiProperty({
     required: false,
     type: String,
